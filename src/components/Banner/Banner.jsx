@@ -3,9 +3,9 @@ const Banner = () => {
     <div className="py-10 md:py-20 justify-center lg:justify-between">
       <div className="hero-content flex-col justify-center lg:justify-between items-center lg:flex-row-reverse">
         <img
-          src="/src/assets/images/user.png"
+          src="https://img.freepik.com/free-photo/portrait-successful-man-having-stubble-posing-with-broad-smile-keeping-arms-folded_171337-1267.jpg?size=626&ext=jpg&ga=GA1.1.248182700.1705453505&semt=sph"
           alt="not found image"
-          className="max-w-sm md:max-w-md rounded-lg"
+          className="max-w-sm md:max-w-lg rounded-lg"
         />
         <div>
           <h1 className="text-3xl md:text-6xl font-bold text-center md:text-left">
