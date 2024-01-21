@@ -1,6 +1,9 @@
 import { useLoaderData, useParams } from 'react-router-dom';
 import { LuCircleDollarSign } from 'react-icons/lu';
 import { MdOutlineSubtitles } from 'react-icons/md';
+import { addLocal, checkLocalStorege } from '../../utilitis/LocalStorege';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const JobDetails = () => {
   const jobs = useLoaderData();
@@ -15,12 +18,23 @@ const JobDetails = () => {
     job_title,
     contact_information,
   } = job;
+  const handleToast = () => {
+    const checkLocalId = checkLocalStorege();
+    const checkId = checkLocalId.find(lid => lid === id);
+
+    if (checkId) {
+      toast('Sorry All Ready apply');
+    } else {
+      addLocal(id);
+      toast('Suscces apply');
+    }
+  };
   return (
     <div>
       <h1 className="py-7 bg-gray-100 rounded-lg text-center text-3xl font-bold tracking-widest">
         Job Details
       </h1>
-      <div className="grid grid-cols-4 gap-3 py-20">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 py-20">
         <div className="col-span-3 space-y-5 p-4 border shadow-xl">
           <h2>
             <span className="font-bold">Job Description:</span>
@@ -78,12 +92,16 @@ const JobDetails = () => {
             </div>
           </div>
           <div className="mt-4">
-            <button className="bg-blue-500 text-white text-xl font-semibold w-full py-2 rounded-lg">
+            <button
+              onClick={() => handleToast()}
+              className="bg-blue-500 text-white text-xl font-semibold w-full py-2 rounded-lg"
+            >
               Apply Now
             </button>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
